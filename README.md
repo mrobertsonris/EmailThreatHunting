@@ -6,37 +6,45 @@ Email remains one of the most common vectors for cyberattacks, making effective 
 
 Sublime provides a robust platform for identifying, investigating, and remediating these threats with precision and efficiency. Its powerful query language and seamless integration with email platforms make it an invaluable tool for security teams looking to enhance their threat hunting capabilities.
 
-By the end of this project, you'll learn how to set up Sublime with popular email providers and develop practical skills to proactively identify and respond to email threats.
+By the end of this workshop, you'll learn how to set up Sublime with your email providers and develop practical skills to proactively identify and respond to email threats.
 
 ---
 
-## Setup
+## Sublime Email Analyzer
+
+**EML Analyzer [here](https://analyzer.sublime.security/).**
+
+Automatically analyze any EML to quickly investigate suspicious or user reported emails.
+
+Run the full Sublime platform using the below **Advanced Setup** for a complete analysis that includes organizational context, history, and behavioral baselines that the EML Analyzer doesn't have.
+
+How does it work?
+The EML Analyzer parses and enriches raw email messages into a structured schema, the Message Data Model (MDM), and then analyzes that MDM using detection rules written in Message Query Language (MQL). The Analyzer runs all detection rules present in the Sublime Core Feed.
+
+---
+
+## Advanced Setup -- (Optional)
 
 ### Prerequisites
 - An active subscription to either **Office 365** or **Google Workspace**
 - Administrator access to your organization's email environment
-- A Sublime account ([Sign up here](https://www.sublime.security/))
+- A Sublime account ([Sign up here](https://sublime.security/start/))
 
 ### 1. Setting up Sublime with Office 365
 
-1. Log in to the **Microsoft 365 Admin Center**.
-2. Register Sublime as an application in Azure Active Directory:
-   - Navigate to `Azure Active Directory > App Registrations`.
-   - Select **New Registration** and follow the prompts.
-3. Assign appropriate API permissions for email access (e.g., `Mail.Read`).
-4. Generate a client secret and note the **App ID**, **Tenant ID**, and **Client Secret** for later use.
-5. Connect Sublime to Office 365 by following the detailed guide [here](https://docs.sublime.security/docs/office365).
+1. Log in to the **Microsoft Office Admin Console**.
+2. Connect Sublime to Office 365 by following the detailed guide [here](https://docs.sublime.security/docs/installation).
+3. Add a new message source under **Admin -> Message Sources**.
+4. Follow the prompts. Sublime will automatically add the **Graph API Connector** once approved.
+
+Once the setup is complete, you can begin leveraging Sublime's capabilities for email threat hunting.
 
 ### 2. Setting up Sublime with Google Workspace
 
 1. Log in to the **Google Workspace Admin Console**.
-2. Enable API access:
-   - Navigate to `Security > API Controls > Enable API Access`.
-3. Set up a service account in Google Cloud Platform:
-   - Go to the [Google Cloud Console](https://console.cloud.google.com/).
-   - Create a new project and enable the Gmail API.
-   - Configure a service account with the required permissions.
-4. Connect Sublime to Google Workspace by following the detailed guide [here](https://docs.sublime.security/docs/google-workspace).
+2. Connect Sublime to Google Workspace by following the detailed guide [here](https://docs.sublime.security/docs/installation).
+3. Add a new message source under **Admin -> Message Sources**.
+4. Follow the prompts. Sublime will require you to add the private **Google Workspace Marketplace App** to complete the connection [here](https://workspace.google.com/marketplace/app/sublime_cloud_platform/421484249706).
 
 Once the setup is complete, you can begin leveraging Sublime's capabilities for email threat hunting.
 
