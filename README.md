@@ -11,7 +11,7 @@ Email remains one of the most common cyberattack vectors, making email threat hu
 Sublime enhances your detection capabilities with robust features, including organizational context, historical insights, and behavioral baselines; offering significantly more than standard EML analyzers. With Sublime, you get:
 
 - A **30-day historical data ingestion**, paired with a **14-day free trial**, for a comprehensive 44-day analysis window
-- A **free managed tier** for up to **100 mailboxes**, ideal for smaller organizations or a representative subset of critical/highly targetted user mailboxs
+- A **free managed tier** for up to **100 mailboxes**, ideal for smaller organizations or a representative subset of critical/highly targetted user mailboxes
 
 By the end of this workshop, you’ll learn how to:
 - Use Sublime's **Message Query Language (MQL)**
