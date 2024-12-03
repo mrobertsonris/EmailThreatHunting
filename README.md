@@ -92,7 +92,7 @@ Practice threat hunting with these scenarios. Use the hidden solutions to verify
 
 ### 🏹 Completing each example will unlock the next. Happy hunting!
 
-### Example 1: DIRECT DEPOSIT CHANGE
+### Example 1: DIRECT DEPOSIT CHANGE -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
 Payroll fraud involving employee spoofing occurs when an attacker impersonates an employee to request changes to their direct deposit details, diverting funds to the attacker’s account. This is typically done through phishing emails, social engineering, or forged documents. It can result in financial loss, employee distress, and reputational damage if not promptly detected and mitigated.
 
 <details>
@@ -127,7 +127,7 @@ and 1 of (
 )
   ```
 
-### Example 2: Detecting Suspicious Senders
+### Example 2: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
 Identify emails sent from domains resembling your company’s.
 
 <details>
@@ -144,7 +144,7 @@ Identify emails sent from domains resembling your company’s.
   FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
   ```
 
-### Example 3: Detecting Suspicious Senders
+### Example 3: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
 Identify emails sent from domains resembling your company’s.
 
 <details>
@@ -161,7 +161,7 @@ Identify emails sent from domains resembling your company’s.
   FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
   ```
 
-### Example 4: Detecting Suspicious Senders
+### Example 4: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
 Identify emails sent from domains resembling your company’s.
 
 <details>
@@ -178,7 +178,7 @@ Identify emails sent from domains resembling your company’s.
   FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
   ```
 
-### Example 5: Detecting Suspicious Senders
+### Example 5: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
 Identify emails sent from domains resembling your company’s.
 
 <details>
