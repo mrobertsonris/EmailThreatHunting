@@ -54,11 +54,33 @@ Once connected, Sublime is ready for comprehensive email threat hunting.
 
 ---
 
+## 🔗 Useful Links
+
+[EML Analyzer](https://analyzer.sublime.security/)
+[Sublime Core Feed](https://sublime.security/feeds/core/?page=1&view=list)
+[MQL Syntax](https://docs.sublime.security/docs/syntax)
+[Common snippets](https://docs.sublime.security/docs/common-snippets)
+[YARA Rules](https://docs.sublime.security/docs/yara)
+
+**How-To MQL Guides**
+[How to detect keywords or phrases in the body content of messages](https://docs.sublime.security/docs/how-to-detect-keywords-or-phrases-in-the-body)
+[How to detect text in attachments](https://docs.sublime.security/docs/how-to-detect-text-in-attachments)
+
+**Additional Learning Resources**
+[Sublime Email Detection Engineering and Threat Hunting Labs](https://labs.sublime.security/)
+[Sublime Blog](https://sublime.security/blog/)
+[Sublime Community Slack](https://join.slack.com/t/sublimecommunity/shared_invite/zt-2pgrmaiv7-~P4w6t9JEJO7NenHCdriDA)
+
+
+
+
+---
+
 ## 💡 Tips and Tricks
 
 Start with the most broad query that will flag on your example. Sometimes a complex rule is needed for a specific scenario, but often the best rule, is the most simple you can get away with!
 
-Use existing rules in the [Sublime Core Feed](https://sublime.security/feeds/core/?page=1&view=list) or [Common snippets](https://docs.sublime.security/docs/common-snippets) to fit the conditions you are attempting to flag on.
+Use existing rules in the [Sublime Core Feed](https://sublime.security/feeds/core/?page=1&view=list) or strings from [Common snippets](https://docs.sublime.security/docs/common-snippets) to fit the conditions you are attempting to flag on.
 
 ---
 
