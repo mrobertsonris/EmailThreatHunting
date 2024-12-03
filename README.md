@@ -36,14 +36,14 @@ For advanced analysis with added organizational context, follow the **Advanced S
 - Administrator access to your organization's email environment
 - A Sublime account ([Sign up here](https://sublime.security/start/))
 
-### ![image](https://github.com/user-attachments/assets/316a2f09-a573-4606-84ca-6efddb56377d) Setup for Office 365 
+### ⚡ Setup for Office 365 
 
 1. Log in to the **Microsoft Office Admin Console**.
 2. Follow the link here, or continue with the step-by-step setup guide inside of Sublime: [Installation for Office 365](https://docs.sublime.security/docs/installation).
 3. Navigate to **Admin → Message Sources** in Sublime and add a new message source.
 4. Approve the **Graph API Connector** to establish the connection.
 
-### ![image](https://github.com/user-attachments/assets/27010de6-fa20-42d2-a1af-e22f29bb881c) Setup for Google Workspace
+### ⚡ Setup for Google Workspace
 
 1. Log in to the **Google Workspace Admin Console**.
 2. Follow the link here, or continue with the step-by-step setup guide inside of Sublime: [Installation for Google Workspace](https://docs.sublime.security/docs/installation).
