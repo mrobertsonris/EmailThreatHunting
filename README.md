@@ -90,7 +90,7 @@ Use existing rules in the [Sublime Core Feed](https://sublime.security/feeds/cor
 
 Practice threat hunting with these scenarios. Use the hidden solutions to verify your work only after attempting the queries. I will give what I think is good detection logic, but there will always be more than 1 correct answer as you may see a different way forward! 
 
-## Completing each example will unlock the next.
+## 🏹 Completing each example will unlock the next. Happy hunting!
 
 ### Example 1: Detecting Suspicious Senders
 Identify emails sent from domains resembling your company’s.
