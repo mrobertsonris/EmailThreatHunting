@@ -20,7 +20,7 @@ By the end of this workshop, you’ll learn how to:
 
 ## ✉️ Sublime Email Analyzer (No Installation Required)
 
-Quickly analyze suspicious emails with the **[EML Analyzer](https://analyzer.sublime.security/)**.
+➡️	Quickly analyze suspicious emails with the **[EML Analyzer](https://analyzer.sublime.security/)**.
 
 - **What it does**: Parses and enriches raw email messages into a structured schema, the **Message Data Model (MDM)**, and runs detection rules using Sublime's **MQL**
 - **What it’s for**: Investigate suspicious or user-reported emails without needing full platform integration
