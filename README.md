@@ -98,9 +98,11 @@ Identify emails sent from domains resembling your company’s.
 
   ``` txt
   Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
+  ```
 
 <details>
   <summary>Solution</summary>
 
   ``` yml
   FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
+  ```
