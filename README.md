@@ -6,11 +6,17 @@ Email remains one of the most common vectors for cyberattacks, making effective 
 
 Sublime provides a robust platform for identifying, investigating, and remediating these threats with precision and efficiency. Its powerful query language and seamless integration with email platforms make it an invaluable tool for security teams looking to enhance their threat hunting capabilities.
 
-By the end of this workshop, you'll learn how to set up Sublime with your email providers and develop practical skills to proactively identify and respond to email threats.
+Plugging in Sublime will enhance your ability to detect malicious messages. It provides a comprehensive analysis that includes organizational context, history, and behavioral baselines—features that the EML Analyzer does not offer.
+
+This includes a 30-day historical data ingestion, combined with the 14-day trial, effectively giving you a 44-day window to understand how the environment would operate with Sublime integrated.
+
+More importantly, for the purpose of this workshop—and for us as practitioners in general—Sublime offers a free managed tier that supports up to 100 user mailboxes. If your organization has fewer than 100 mailboxes, great! If it’s larger, consider continuing after the trial with a representative sample of your most critical mailboxes.
+
+By the end of this workshop, you'll learn how to use Sublime's Message Query Language (MQL) and develop practical skills to proactively identify and respond to email threats.
 
 ---
 
-## Sublime Email Analyzer
+## Sublime Email Analyzer -- (No Installation Required)
 
 **EML Analyzer [here](https://analyzer.sublime.security/).**
 
@@ -36,8 +42,6 @@ The EML Analyzer parses and enriches raw email messages into a structured schema
 2. Connect Sublime to Office 365 by following the detailed guide [here](https://docs.sublime.security/docs/installation).
 3. Add a new message source under **Admin -> Message Sources**.
 4. Follow the prompts. Sublime will automatically add the **Graph API Connector** once approved.
-
-Once the setup is complete, you can begin leveraging Sublime's capabilities for email threat hunting.
 
 ### 2. Setting up Sublime with Google Workspace
 
