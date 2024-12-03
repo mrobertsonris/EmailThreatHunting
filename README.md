@@ -92,21 +92,39 @@ Practice threat hunting with these scenarios. Use the hidden solutions to verify
 
 ### 🏹 Completing each example will unlock the next. Happy hunting!
 
-### Example 1: Detecting Suspicious Senders
-Identify emails sent from domains resembling your company’s.
+### Example 1: DIRECT DEPOSIT CHANGE
+Payroll fraud involving employee spoofing occurs when an attacker impersonates an employee to request changes to their direct deposit details, diverting funds to the attacker’s account. This is typically done through phishing emails, social engineering, or forged documents. It can result in financial loss, employee distress, and reputational damage if not promptly detected and mitigated.
 
 <details>
   <summary>Hint</summary>
 
   ``` txt
-  Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
+  Consider creating a string or regex detection for some of the keywords present in the subject or body text.
   ```
 
 <details>
   <summary>Solution</summary>
 
   ``` yml
-  FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
+type.inbound
+and 1 of (
+  regex.icontains(body.current_thread.text,
+                  '(pay\s?(roll|check|date|day)|direct deposit|\bACH\b|\bdd\b|gehalt|salario|salary)'
+  ),
+  regex.icontains(subject.subject,
+                  '(pay\s?(roll|check|date|day)|direct deposit|\bACH\b|\bdd\b|gehalt|salario|salary)'
+  ),
+  // request
+  (
+    any(ml.nlu_classifier(body.current_thread.text).entities,
+        .name == "request"
+    )
+    // financial
+    and any(ml.nlu_classifier(body.current_thread.text).entities,
+            .name == "financial"
+    )
+  )
+)
   ```
 
 ### Example 2: Detecting Suspicious Senders
