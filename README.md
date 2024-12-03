@@ -54,9 +54,17 @@ Once connected, Sublime is ready for comprehensive email threat hunting.
 
 ---
 
+## 💡 Tips and Tricks
+
+Start with the most broad query that will flag on your example. Sometimes a complex rule is needed for a specific scenario, but often the best rule, is the most simple you can get away with!
+
+Use existing rules in the [Sublime Core Feed](https://sublime.security/feeds/core/?page=1&view=list) or [Common snippets](https://docs.sublime.security/docs/common-snippets) to fit the conditions you are attempting to flag on.
+
+---
+
 ## 🧪 Examples
 
-Practice threat hunting with these scenarios. Use the hidden solutions to verify your work only after attempting the queries.
+Practice threat hunting with these scenarios. Use the hidden solutions to verify your work only after attempting the queries. There will always be more than 1 correct answer!
 
 ### Example 1: Detecting Suspicious Senders
 Identify emails sent from domains resembling your company’s.
