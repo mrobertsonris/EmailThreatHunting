@@ -64,5 +64,5 @@ Identify emails sent from domains resembling your company’s.
 <details>
   <summary>Solution</summary>
 
-  ```sql
+  ```yml
   FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
