@@ -94,7 +94,13 @@ Practice threat hunting with these scenarios. Use the hidden solutions to verify
 Identify emails sent from domains resembling your company’s.
 
 <details>
+  <summary>Hint</summary>
+
+  ``` txt
+  Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
+
+<details>
   <summary>Solution</summary>
 
-  ``` yaml
+  ``` yml
   FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
