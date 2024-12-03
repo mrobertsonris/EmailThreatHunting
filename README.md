@@ -18,7 +18,7 @@ By the end of this workshop, you’ll learn how to:
 
 ---
 
-## ✉️ Sublime Email Analyzer (No Installation Required)
+## 📨 Sublime Email Analyzer (No Installation Required)
 
 ### ➡️ Quickly analyze suspicious emails with the **[EML Analyzer](https://analyzer.sublime.security/)**
 
