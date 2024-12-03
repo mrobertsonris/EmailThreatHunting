@@ -71,6 +71,9 @@ Once connected, Sublime is ready for comprehensive email threat hunting.
 - [Sublime Blog](https://sublime.security/blog/)
 - [Sublime Community Slack](https://join.slack.com/t/sublimecommunity/shared_invite/zt-2pgrmaiv7-~P4w6t9JEJO7NenHCdriDA)
 
+**CISA Secure Cloud Business Applications (SCuBA) Project**
+- [SCuBA](https://www.cisa.gov/resources-tools/services/secure-cloud-business-applications-scuba-project)
+
 ---
 
 ## 💡 Tips and Tricks
