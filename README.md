@@ -39,14 +39,14 @@ For advanced analysis with added organizational context, follow the **Advanced S
 ### 🚀 Setup for Office 365
 
 1. Log in to the **Microsoft Office Admin Console**.
-2. Follow the detailed setup guide: [Installation for Office 365](https://docs.sublime.security/docs/installation).
+2. Follow the link here, or continue with the step-by-step setup guide inside of Sublime: [Installation for Office 365](https://docs.sublime.security/docs/installation).
 3. Navigate to **Admin → Message Sources** in Sublime and add a new message source.
 4. Approve the **Graph API Connector** to establish the connection.
 
 ### 🚀 Setup for Google Workspace
 
 1. Log in to the **Google Workspace Admin Console**.
-2. Follow the detailed setup guide: [Installation for Google Workspace](https://docs.sublime.security/docs/installation).
+2. Follow the link here, or continue with the step-by-step setup guide inside of Sublime: [Installation for Google Workspace](https://docs.sublime.security/docs/installation).
 3. Navigate to **Admin → Message Sources** in Sublime and add a new message source.
 4. Complete the connection by adding the private **Google Workspace Marketplace App** [here](https://workspace.google.com/marketplace/app/sublime_cloud_platform/421484249706).
 
