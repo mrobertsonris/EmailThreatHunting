@@ -95,6 +95,7 @@ Practice threat hunting with these scenarios. Use the hidden solutions to verify
 ### Example 1: DIRECT DEPOSIT CHANGE -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
 Payroll fraud involving employee spoofing occurs when an attacker impersonates an employee to request changes to their direct deposit details, diverting funds to the attacker’s account. This is typically done through phishing emails, social engineering, or forged documents. It can result in financial loss, employee distress, and reputational damage if not promptly detected and mitigated.
 
+
 <details>
   <summary>Hint</summary>
 
@@ -129,6 +130,7 @@ and 1 of (
 ### Example 2: Jamie sent you a file -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/Jamie%20sent%20you%20a%20file.eml)
 Attackers exploit free-form submission and collaboration tools like Google Drawings to conduct chainlink phishing attacks by hosting malicious content on these trusted platforms. They craft phishing emails that direct recipients to seemingly legitimate documents or graphics hosted on services like Google Drawings, which contain embedded malicious links. This strategy leverages the inherent trust in well-known platforms to bypass security filters and deceive users into clicking on harmful links, leading to credential theft or malware installation. 
 
+
 <details>
   <summary>Hint</summary>
 
@@ -151,6 +153,7 @@ and (
 
 ### Example 3: DocsCompleted_Thank you! -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DocsCompleted_Thank%20you.eml)
 File-sharing services like DocuSign, SharePoint etc. are often targeted by attackers using phishing, including advanced techniques like Adversary-in-the-Middle (AitM) phishing, to steal user credentials or session tokens. Attackers may also distribute malware-laden files or chainlink phishing to redirect the user several times before reaching the actual phishing page.
+
 
 <details>
   <summary>Hint</summary>
@@ -251,19 +254,21 @@ and (
   ```
 
 ### Example 5: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
-Identify emails sent from domains resembling your company’s.
+Newly registered domains (NRDs) are often used in malicious email attacks because they are unlikely to be flagged by security systems due to their lack of history or reputation. Attackers use these domains to impersonate trusted organizations, send phishing emails, or host malicious content, such as fake login pages or malware. Their short lifespan and ability to bypass filters make NRDs a powerful tool for delivering credential theft and malware attacks.
+
 
 <details>
   <summary>Hint</summary>
 
   ``` txt
-  Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
+  Consider the insights that triggered here. Can you create a detection with whois data for a domain that is less than 30 days old?
   ```
 
 <details>
   <summary>Solution</summary>
 
   ``` yml
-  FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
+type.inbound
+and any(body.links, network.whois(.href_url.domain).days_old <= 30)
   ```
 
