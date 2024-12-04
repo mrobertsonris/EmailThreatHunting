@@ -324,4 +324,5 @@ Attackers use intentionally corrupted Word documents in phishing emails to evade
 ## 🎉 Congratulations! You've completed the "Advanced Email Threat Hunting w/ Detection as Code" workshop. Use your newly aquired skills and go catch some bad guys. Happy hunting!
 
 **[Detection Rules based on the examples in this workshop](https://github.com/mrobertsonris/EmailThreatHunting/tree/main/detection-rules)**
+
 **Consider adding this as a "Feed" in Sublime as an alternative to manually hunting with each rule individually.**
