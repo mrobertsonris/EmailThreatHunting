@@ -126,8 +126,30 @@ and 1 of (
   )
 )
   ```
+### Example 2: Jamie sent you a file -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/Jamie%20sent%20you%20a%20file.eml)
+Identify emails sent from domains resembling your company’s.
 
-### Example 2: DocsCompleted_Thank you! -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DocsCompleted_Thank%20you.eml)
+<details>
+  <summary>Hint</summary>
+
+  ``` txt
+  Free form submission and collaboration tools are often used for chainlink phishing. In this case, the attacker appears to be using a fake image in a Google drawing. Can you detect for the use of a Google drawings link or current thread text?
+  ```
+
+<details>
+  <summary>Solution</summary>
+
+  ``` yml
+type.inbound
+and (
+  strings.icontains(body.current_thread.text, "docs.google.com/drawings/")
+  or any(body.links,
+         strings.ilike(.href_url.url, "*docs.google.com/drawings/*")
+  )
+)
+  ```
+
+### Example 3: DocsCompleted_Thank you! -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DocsCompleted_Thank%20you.eml)
 File-sharing services like DocuSign, SharePoint etc. are often targeted by attackers using phishing, including advanced techniques like Adversary-in-the-Middle (AitM) phishing, to steal user credentials or session tokens. Attackers may also distribute malware-laden files or chainlink phishing to redirect the user several times before reaching the actual phishing page.
 
 <details>
@@ -190,38 +212,41 @@ type.inbound
 and regex.icontains(body.html.raw, '(<p>&nbsp;<\/p>\s*){9}')
   ```
 
-### Example 3: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
+### Example 4: One pkg to rule them all -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/One%20pkg%20to%20rule%20them%20all.eml)
 Identify emails sent from domains resembling your company’s.
 
 <details>
   <summary>Hint</summary>
 
   ``` txt
-  Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
+  Consider writing a detection 
   ```
 
 <details>
   <summary>Solution</summary>
 
   ``` yml
-  FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
-  ```
-
-### Example 4: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
-Identify emails sent from domains resembling your company’s.
-
-<details>
-  <summary>Hint</summary>
-
-  ``` txt
-  Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
-  ```
-
-<details>
-  <summary>Solution</summary>
-
-  ``` yml
-  FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
+type.inbound
+and (
+  any(attachments,
+      .file_extension in~ $file_extensions_common_archives
+      and any(file.explode(.),
+              .depth > 0
+              and .file_extension in~ (
+                "onenote", // Microsoft OneNote notebook file
+                "one", // Microsoft OneNote section file
+                "onepkg", // Microsoft OneNote package file
+              )
+      )
+  )
+  or any(attachments,
+         .file_extension in~ (
+           "onenote", // Microsoft OneNote notebook file
+           "one", // Microsoft OneNote section file
+           "onepkg", // Microsoft OneNote package file
+         )
+  )
+)
   ```
 
 ### Example 5: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
