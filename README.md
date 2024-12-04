@@ -127,7 +127,7 @@ and 1 of (
 )
   ```
 ### Example 2: Jamie sent you a file -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/Jamie%20sent%20you%20a%20file.eml)
-Identify emails sent from domains resembling your company’s.
+Attackers exploit free-form submission and collaboration tools like Google Drawings to conduct chainlink phishing attacks by hosting malicious content on these trusted platforms. They craft phishing emails that direct recipients to seemingly legitimate documents or graphics hosted on services like Google Drawings, which contain embedded malicious links. This strategy leverages the inherent trust in well-known platforms to bypass security filters and deceive users into clicking on harmful links, leading to credential theft or malware installation. 
 
 <details>
   <summary>Hint</summary>
@@ -213,13 +213,14 @@ and regex.icontains(body.html.raw, '(<p>&nbsp;<\/p>\s*){9}')
   ```
 
 ### Example 4: One pkg to rule them all -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/One%20pkg%20to%20rule%20them%20all.eml)
-Identify emails sent from domains resembling your company’s.
+Malicious OneNote files are used in phishing emails to deliver malware by embedding malicious scripts or links within the file. These emails often impersonate trusted contacts or organizations to trick users into opening the file and triggering the malware. This can lead to further phishing, device compromise, data theft, or the spread of ransomware.
+
 
 <details>
   <summary>Hint</summary>
 
   ``` txt
-  Consider writing a detection 
+  Try to create a detection looking for the presence of a onenote file.
   ```
 
 <details>
