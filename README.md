@@ -127,21 +127,55 @@ and 1 of (
 )
   ```
 
-### Example 2: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
-Identify emails sent from domains resembling your company’s.
+### Example 2: DocsCompleted_Thank you! -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DocsCompleted_Thank%20you.eml)
+File-sharing services like DocuSign, SharePoint etc. are often targeted by attackers using phishing, including advanced techniques like Adversary-in-the-Middle (AitM) phishing, to steal user credentials or session tokens. Attackers may also distribute malware-laden files or chainlink phishing to redirect the user several times before reaching the actual phishing page.
 
 <details>
   <summary>Hint</summary>
 
   ``` txt
-  Consider the insights that triggered here and if you could write an expression that would look for unsolicited emails.
+  There are several malicious characteristics of this email to target. The email appears to be using a different font and type than the Docusign logo and the ML isn't catching it. Are there other ways you can detect the Docusign usage in the message screenshot? 
+
+Additionally, there appars to be a large spacing after the initial message and a fake thread. Attackers often use this tactic of an email from a previous breach. Can you detect this fake message thread or the abnormal amount of spaces?
   ```
 
 <details>
   <summary>Solution</summary>
 
   ``` yml
-  FROM addresses CONTAINING domain SIMILAR TO "yourdomain.com"
+type.inbound
+and (
+   any(body.links,
+         (
+           regex.icontains(.display_text, "\\bVIEW")
+         )
+  )
+)
+
+
+type.inbound
+and (
+strings.icontains(body.current_thread.text, 'docusign')
+  or strings.ilevenshtein(body.current_thread.text, 'docusign') <= 1
+)
+// negate docusign 'via' messages
+and not (
+  any(headers.hops,
+      any(.fields,
+          .name == "X-Api-Host" and strings.ends_with(.value, "docusign.net")
+      )
+  )
+  and strings.contains(sender.display_name, "via")
+)
+// negate docusign originated emails
+and not any(headers.hops,
+            regex.imatch(.received.server.raw, ".+.docusign.(net|com)")
+)
+
+
+type.inbound
+// Detects 9 or more consecutive <p>&nbsp;</p> (empty paragraph tags containing non-breaking spaces), indicating excessive use of empty paragraphs.
+and regex.icontains(body.html.raw, '(<p>&nbsp;<\/p>\s*){9}')
   ```
 
 ### Example 3: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
