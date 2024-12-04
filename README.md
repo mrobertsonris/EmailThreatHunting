@@ -152,6 +152,12 @@ and (
   )
 )
 
+```
+
+<details>
+  <summary>Solution 2</summary>
+
+``` yml
 
 type.inbound
 and (
@@ -172,6 +178,12 @@ and not any(headers.hops,
             regex.imatch(.received.server.raw, ".+.docusign.(net|com)")
 )
 
+```
+
+<details>
+  <summary>Solution 3</summary>
+
+``` yml
 
 type.inbound
 // Detects 9 or more consecutive <p>&nbsp;</p> (empty paragraph tags containing non-breaking spaces), indicating excessive use of empty paragraphs.
