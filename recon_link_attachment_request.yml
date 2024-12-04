@@ -1,0 +1,62 @@
+name: "Recon - Link in Attachment with a Request"
+description: "Looks for a request in an attachment that also includes a link."
+type: "rule"
+severity: low
+source: |
+    type.inbound
+    and not sender.email.local_part == "postmaster"
+    and not sender.email.local_part == "mailer-daemon"
+    and (
+      any(attachments,
+          (
+            .file_extension in~ (
+              "html",
+              "htm",
+              "shtml",
+              "dhtml",
+              "xml",
+              "xht",
+              "xhtm",
+              "xhtml",
+              "eml"
+            )
+            or .file_extension in~ $file_extensions_macros
+            or .file_extension in~ $file_types_images
+            or .content_type == "text/html"
+            or .content_type == "message/rfc822"
+          )
+          and (
+            any(file.explode(.),
+                any(ml.nlu_classifier(.scan.ocr.raw).entities, .name == "request")
+            )
+            or any(ml.nlu_classifier(body.current_thread.text).entities,
+                  .name == "request"
+            )
+          )
+          and (
+            (
+              any(file.explode(.),
+                  any(.scan.url.urls, strings.icontains(.scheme, "http"))
+              )
+            )
+            or (
+              any(file.explode(.), strings.icontains(.scan.qr.url.scheme, "http"))
+            )
+          )
+          and not (
+            any(file.explode(.),
+                any(.scan.exiftool.fields, strings.icontains(.key, "Flash"))
+            )
+          )
+      )
+      // sender profile
+      and (
+        profile.by_sender().prevalence in ("new", "outlier")
+        or (
+          profile.by_sender().any_messages_malicious_or_spam
+          and not profile.by_sender().any_false_positives
+        )
+      )
+    )
+authors:
+- name: "Michael Robertson"
