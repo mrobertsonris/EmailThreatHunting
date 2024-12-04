@@ -253,7 +253,7 @@ and (
 )
   ```
 
-### Example 5: Detecting Suspicious Senders -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DIRECT%20DEPOSIT%20CHANGE.eml)
+### Example 5: eMail Account Suspention Notice -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/eMail%20Account%20Suspention%20Notice.eml)
 Newly registered domains (NRDs) are often used in malicious email attacks because they are unlikely to be flagged by security systems due to their lack of history or reputation. Attackers use these domains to impersonate trusted organizations, send phishing emails, or host malicious content, such as fake login pages or malware. Their short lifespan and ability to bypass filters make NRDs a powerful tool for delivering credential theft and malware attacks.
 
 
