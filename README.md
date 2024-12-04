@@ -4,6 +4,9 @@
 
 ---
 
+## ‼️ Disclaimer
+This project is provided "as-is" without any guarantee of updates or maintenance. Please note that some samples included may contain malicious links or attachments. By using this repository, you agree to handle all materials responsibly and understand the associated risks. The authors are not liable for any misuse or consequences resulting from the use of this project.
+
 ## 📖 Overview
 
 Email remains one of the most common cyberattack vectors, making email threat hunting a vital skill for security professionals. While tools like secure email gateways and provider-level protections (e.g., Office 365, Google Workspace) catch obvious threats, advanced phishing, spoofing, and sophisticated attacks often slip through.
@@ -325,4 +328,4 @@ Attackers use intentionally corrupted Word documents in phishing emails to evade
 
 **[Detection Rules based on the examples in this workshop](https://github.com/mrobertsonris/EmailThreatHunting/tree/main/detection-rules)**
 
-**Consider adding this as a "Feed" in Sublime as an alternative to manually hunting with each rule individually.**
+**Add this repo as a "Feed" in Sublime as an alternative to manually hunting with each rule individually.**
