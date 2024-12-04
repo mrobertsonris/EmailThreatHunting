@@ -1,0 +1,29 @@
+name: "Recon - Google Resource Invite with Google Forms Link"
+description: "Detects when a new sender sends a Google Meet link that includes a Google Forms link."
+type: "rule"
+severity: "high"
+source: |
+    type.inbound
+    and (
+      (
+        strings.icontains(body.current_thread.text, "docs.google.com/forms/")
+        or strings.icontains(body.current_thread.text, "docs.google.com/drawings/")
+      )
+      or (
+        strings.icontains(body.current_thread.text, "google")
+        and (
+          strings.icontains(body.current_thread.text, "hash")
+          or strings.icontains(body.current_thread.text, "user-")
+        )
+      )
+    )
+    // sender profile
+    and (
+      profile.by_sender().prevalence in ("new", "outlier")
+      or (
+        profile.by_sender().any_messages_malicious_or_spam
+        and not profile.by_sender().any_false_positives
+      )
+    )
+authors:
+- name: "Michael Robertson"
