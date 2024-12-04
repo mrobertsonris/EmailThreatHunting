@@ -316,6 +316,6 @@ I've predownloaded the file so that it will remain available. Once you have the 
 - [Any Run Sandbox](https://app.any.run/tasks/6839e806-56b6-4504-99a4-cc41c9b509df/?utm_source=twitter&utm_medium=post&utm_campaign=corrupted_files&utm_term=251124&utm_content=linktoservice#)
 
 - [Sublime Core Feed - MALFORMED_OLE_HEADER YARA Rule](https://github.com/sublime-security/sublime-rules/blob/5f3632e47b5fb5f857ded52d010eb096f5c2638f/yara/malformed_ole_header.yar#L4)
-- [Sublime Core Feed - Attachment: Malformed OLE file]([https://x.com/anyrun_app/status/1861024182210900357](https://github.com/sublime-security/sublime-rules/blob/5f3632e47b5fb5f857ded52d010eb096f5c2638f/detection-rules/attachment_malformed_ole.yml))
+- [Sublime Core Feed - Attachment: Malformed OLE file](https://github.com/sublime-security/sublime-rules/blob/5f3632e47b5fb5f857ded52d010eb096f5c2638f/detection-rules/attachment_malformed_ole.yml)
 
 Attackers use intentionally corrupted Word documents in phishing emails to evade security filters. When recipients attempt to repair the document, malicious content is executed, enabling credential theft or malware installation. This tactic exploits trust in document recovery features to increase attack success.
