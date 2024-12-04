@@ -17,7 +17,7 @@ Email remains one of the most common cyberattack vectors, making email threat hu
 By the end of this workshop, you’ll learn how to:
 - Use Sublime's **Message Query Language (MQL)**
 - Proactively identify and respond to email threats with hands-on examples
-- Continue hunting with additional resources
+- Continue hunting with additional resources and **[Detection Rules based on the examples in this workshop](https://github.com/mrobertsonris/EmailThreatHunting/tree/main/detection-rules)**
 
 ---
 
@@ -320,3 +320,7 @@ I've predownloaded the file so that it will remain available. Once you have the 
 - [Sublime Core Feed - Attachment: Malformed OLE file](https://github.com/sublime-security/sublime-rules/blob/5f3632e47b5fb5f857ded52d010eb096f5c2638f/detection-rules/attachment_malformed_ole.yml)
 
 Attackers use intentionally corrupted Word documents in phishing emails to evade security filters. When recipients attempt to repair the document, malicious content is executed, enabling credential theft or malware installation. This tactic exploits trust in document recovery features to increase attack success.
+
+## 🎉 Congratulations! You've completed the "Advanced Email Threat Hunting w/ Detection as Code" workshop. Use your newly aquired skills and go catch some bad guys. Happy hunting!
+
+**[Detection Rules based on the examples in this workshop](https://github.com/mrobertsonris/EmailThreatHunting/tree/main/detection-rules)**
