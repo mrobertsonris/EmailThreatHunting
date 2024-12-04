@@ -277,8 +277,7 @@ and any(body.links, network.whois(.href_url.domain).days_old <= 30)
 For this sample you'll need to build an .eml with the Sublime analyzer. I've predownloaded the file so that it will remain available. Once you have the .zip file of the malware sample downloaded, extract the PDF contained. Using the Sublime EML Analyzer, "Build an EML", and add the PDF as an attachment. **Sample (pw = infected)**
 - [JoesSandbox Windows Analysis Report](https://www.joesandbox.com/analysis/1561072/0/html)
 
-Payroll fraud involving employee spoofing occurs when an attacker impersonates an employee to request changes to their direct deposit details, diverting funds to the attacker’s account. This is typically done through phishing emails, social engineering, or forged documents. It can result in financial loss, employee distress, and reputational damage if not promptly detected and mitigated.
-
+Fake PDF files with malicious links are used in phishing attacks to trick recipients into clicking links that lead to credential theft or malware downloads. These files are often disguised as legitimate documents from trusted sources, exploiting the perceived safety of PDFs to bypass user suspicion. This threat highlights the importance of scrutinizing unexpected attachments and using advanced email security to detect malicious activity.
 
 <details>
   <summary>Hint</summary>
