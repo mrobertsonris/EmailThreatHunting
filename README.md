@@ -304,3 +304,18 @@ and any(attachments,
         )
 )
   ```
+
+### Example 7: Сhеϲk Νеԝ Αdjυѕtⅿеntѕ Rеⅼеаѕеd! Rеvіеԝ аnd ϲⅼаіⅿ уουr Βеnеfіt/Βοnυѕ fοr Μаіⅼοnⅼіnе Αϲtіvіtіеѕ 4th Qυаrtеr - ΙуΝՍRᏙhՍΤⅼᏙΝՍkFΟRΕ9ΝΟᎠΑjΙԝ== -- [Download Sample Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/sample-1561072-71fa2fea553b9df8eab077f6b5af3ed7.zip)
+This is a great example of responding to OSINT by hunting, then creating a new detection. This was performed by the Sublime team just a few hours after the technique was observed in the wild!
+
+I've predownloaded the file so that it will remain available. Once you have the .zip file of the malware sample downloaded, extract and upload to the Sublime EML Analyzer. **Sample (pw = infected)**
+
+- [Original Any Run OSINT](https://x.com/anyrun_app/status/1861024182210900357)
+- [Bleeping Computer OSINT](https://www.bleepingcomputer.com/news/security/novel-phishing-campaign-uses-corrupted-word-documents-to-evade-security/)
+
+- [Any Run Sandbox](https://app.any.run/tasks/6839e806-56b6-4504-99a4-cc41c9b509df/?utm_source=twitter&utm_medium=post&utm_campaign=corrupted_files&utm_term=251124&utm_content=linktoservice#)
+
+- [Sublime Core Feed - MALFORMED_OLE_HEADER YARA Rule](https://github.com/sublime-security/sublime-rules/blob/5f3632e47b5fb5f857ded52d010eb096f5c2638f/yara/malformed_ole_header.yar#L4)
+- [Sublime Core Feed - Attachment: Malformed OLE file]([https://x.com/anyrun_app/status/1861024182210900357](https://github.com/sublime-security/sublime-rules/blob/5f3632e47b5fb5f857ded52d010eb096f5c2638f/detection-rules/attachment_malformed_ole.yml))
+
+Attackers use intentionally corrupted Word documents in phishing emails to evade security filters. When recipients attempt to repair the document, malicious content is executed, enabling credential theft or malware installation. This tactic exploits trust in document recovery features to increase attack success.
