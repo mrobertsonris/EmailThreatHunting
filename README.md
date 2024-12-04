@@ -127,6 +127,7 @@ and 1 of (
   )
 )
   ```
+
 ### Example 2: Jamie sent you a file -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/Jamie%20sent%20you%20a%20file.eml)
 Attackers exploit free-form submission and collaboration tools like Google Drawings to conduct chainlink phishing attacks by hosting malicious content on these trusted platforms. They craft phishing emails that direct recipients to seemingly legitimate documents or graphics hosted on services like Google Drawings, which contain embedded malicious links. This strategy leverages the inherent trust in well-known platforms to bypass security filters and deceive users into clicking on harmful links, leading to credential theft or malware installation. 
 
@@ -272,3 +273,35 @@ type.inbound
 and any(body.links, network.whois(.href_url.domain).days_old <= 30)
   ```
 
+### Example 6: Ajith Babu Salary New Bonus 2024-2025.pdf -- [Download Sample Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/sample-1561072-71fa2fea553b9df8eab077f6b5af3ed7.zip)
+For this sample you'll need to build an .eml with the Sublime analyzer. I've predownloaded the file so that it will remain available. Once you have the .zip file of the malware sample downloaded, extract the PDF contained. Using the Sublime EML Analyzer, "Build an EML", and add the PDF as an attachment. **Sample (pw = infected)**
+- [JoesSandbox Windows Analysis Report](https://www.joesandbox.com/analysis/1561072/0/html)
+
+Payroll fraud involving employee spoofing occurs when an attacker impersonates an employee to request changes to their direct deposit details, diverting funds to the attacker’s account. This is typically done through phishing emails, social engineering, or forged documents. It can result in financial loss, employee distress, and reputational damage if not promptly detected and mitigated.
+
+
+<details>
+  <summary>Hint</summary>
+
+  ``` txt
+  Explore the screenshots of the PDF file being executing in JoeSandbox as well as the insights and links. 
+  ```
+
+<details>
+  <summary>Solution</summary>
+
+  ``` yml
+type.inbound
+and any(attachments,
+        .file_extension == "pdf"
+        and any(file.explode(.),
+                any(.scan.pdf.urls,
+                    regex.contains(.path, '\.(?:html|xhtml|shtml|htm|)\b')
+                )
+                and any(ml.nlu_classifier(.scan.ocr.raw).intents,
+                        .name == "cred_theft"
+                        and .confidence in~ ("medium", "high")
+                )
+        )
+)
+  ```
