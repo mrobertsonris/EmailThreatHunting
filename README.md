@@ -67,6 +67,7 @@ Once connected, Sublime is ready for comprehensive email threat hunting.
 - [MQL Syntax](https://docs.sublime.security/docs/syntax)
 - [Common snippets](https://docs.sublime.security/docs/common-snippets)
 - [YARA Rules](https://docs.sublime.security/docs/yara)
+- [Answer Bank (SPOILERS!)](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Answer%20Bank.md)
 
 **How-To MQL Guides**
 - [How to detect keywords or phrases in the body content of messages](https://docs.sublime.security/docs/how-to-detect-keywords-or-phrases-in-the-body)
