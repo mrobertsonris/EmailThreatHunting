@@ -310,7 +310,7 @@ and any(attachments,
 )
   ```
 
-### Example 7: Сhеϲk Νеԝ Αdjυѕtⅿеntѕ Rеⅼеаѕеd! Rеvіеԝ аnd ϲⅼаіⅿ уουr Βеnеfіt/Βοnυѕ fοr Μаіⅼοnⅼіnе Αϲtіvіtіеѕ 4th Qυаrtеr - ΙуΝՍRᏙhՍΤⅼᏙΝՍkFΟRΕ9ΝΟᎠΑjΙԝ== -- [Download Sample Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/sample-1561072-71fa2fea553b9df8eab077f6b5af3ed7.zip)
+### Example 7: Сhеϲk Νеԝ Αdjυѕtⅿеntѕ Rеⅼеаѕеd! Rеvіеԝ аnd ϲⅼаіⅿ уουr Βеnеfіt/Βοnυѕ fοr Μаіⅼοnⅼіnе Αϲtіvіtіеѕ 4th Qυаrtеr - ΙуΝՍRᏙhՍΤⅼᏙΝՍkFΟRΕ9ΝΟᎠΑjΙԝ== -- [Download Sample Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/3e5cb809-f546-fb3c-b0e3-5de228b453ab.eml.zip)
 This is a great example of responding to OSINT by hunting, then creating a new detection. This was performed by the Sublime team just a few hours after the technique was observed in the wild!
 
 I've predownloaded the file so that it will remain available. Once you have the .zip file of the malware sample downloaded, extract and upload to the Sublime EML Analyzer. **Sample (pw = infected)**
