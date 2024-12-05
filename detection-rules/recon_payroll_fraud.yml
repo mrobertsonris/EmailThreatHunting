@@ -16,7 +16,7 @@ source: |
     ),
     regex.icontains(subject.subject,
                     '(pay\s?(roll|check|date|day)|direct deposit|\bACH\b|\bdd\b|gehalt|salario|salary)'
-    )
+    ))
     // negate highly trusted sender domains unless they fail DMARC authentication
     and (
         (
@@ -31,7 +31,6 @@ source: |
         )
         )
         or sender.email.domain.root_domain not in $high_trust_sender_root_domains
-    )
     )
 authors:
 - name: "Michael Robertson"
