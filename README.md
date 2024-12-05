@@ -133,7 +133,7 @@ and 1 of (
   ```
 
 ### Example 2: Jamie sent you a file -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/Jamie%20sent%20you%20a%20file.eml)
-Attackers exploit free-form submission and collaboration tools like Google Drawings to conduct chainlink phishing attacks by hosting malicious content on these trusted platforms. They craft phishing emails that direct recipients to seemingly legitimate documents or graphics hosted on services like Google Drawings, which contain embedded malicious links. This strategy leverages the inherent trust in well-known platforms to bypass security filters and deceive users into clicking on harmful links, leading to credential theft or malware installation. 
+Attackers exploit free form submission and collaboration tools like Google Drawings to conduct chainlink phishing attacks by hosting malicious content on these trusted platforms. They craft phishing emails that direct recipients to seemingly legitimate documents or graphics hosted on services like Google Drawings, which contain embedded malicious links. This strategy leverages the inherent trust in well-known platforms to bypass security filters and deceive users into clicking on harmful links, leading to credential theft or malware installation. 
 
 
 <details>
