@@ -15,7 +15,7 @@ Email remains one of the most common cyberattack vectors, making email threat hu
 
 - A **30-day historical data ingestion**, paired with a **14-day free Enterprise trial**, for a comprehensive 44-day analysis window
 - A **free managed tier** for up to **100 mailboxes**, ideal for smaller organizations or a representative subset of critical/highly targetted user mailboxes
-- **Free self-managed** deployments are available via Docker (**600 mailboxes**), AWS CloudFormation, and Azure ARM.
+- **Free self-managed** deployments are available via Docker (**600 mailboxes**), AWS CloudFormation, and Azure ARM
 
 By the end of this workshop, you’ll learn how to:
 - Use Sublime's **Message Query Language (MQL)**
