@@ -157,69 +157,7 @@ and (
 )
   ```
 
-### Example 3: DocsCompleted_Thank you! -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/DocsCompleted_Thank%20you.eml)
-File-sharing services like DocuSign, SharePoint etc. are often targeted by attackers using phishing, including advanced techniques like Adversary-in-the-Middle (AitM) phishing, to steal user credentials or session tokens. Attackers may also distribute malware-laden files or chainlink phishing to redirect the user several times before reaching the actual phishing page.
-
-
-<details>
-  <summary>Hint</summary>
-
-  ``` txt
-  There are several malicious characteristics of this email to target. The email appears to be using a different font and type than the Docusign logo and the ML isn't catching it. Are there other ways you can detect the Docusign usage in the message screenshot? 
-
-Additionally, there appars to be a large spacing after the initial message and a fake thread. Attackers often use this tactic of an email from a previous breach. Can you detect this fake message thread or the abnormal amount of spaces?
-  ```
-
-<details>
-  <summary>Solution</summary>
-
-  ``` yml
-type.inbound
-and (
-   any(body.links,
-         (
-           regex.icontains(.display_text, "\\bVIEW")
-         )
-  )
-)
-
-```
-
-<details>
-  <summary>Solution 2</summary>
-
-``` yml
-
-type.inbound
-and (
-strings.icontains(body.current_thread.text, 'docusign')
-  or strings.ilevenshtein(body.current_thread.text, 'docusign') <= 1
-)
-// negate docusign 'via' messages
-and not (
-  any(headers.hops,
-      any(.fields,
-          .name == "X-Api-Host" and strings.ends_with(.value, "docusign.net")
-      )
-  )
-  and strings.contains(sender.display_name, "via")
-)
-// negate docusign originated emails
-and not any(headers.hops,
-            regex.imatch(.received.server.raw, ".+.docusign.(net|com)")
-)
-
-```
-
-<details>
-  <summary>Solution 3</summary>
-
-``` yml
-
-type.inbound
-// Detects 9 or more consecutive <p>&nbsp;</p> (empty paragraph tags containing non-breaking spaces), indicating excessive use of empty paragraphs.
-and regex.icontains(body.html.raw, '(<p>&nbsp;<\/p>\s*){9}')
-  ```
+### Example 3: Removed at request of BEC third party.
 
 ### Example 4: One pkg to rule them all -- [Download Sample .eml Here](https://github.com/mrobertsonris/EmailThreatHunting/blob/main/Example%20Emails/One%20pkg%20to%20rule%20them%20all.eml)
 Malicious OneNote files are used in phishing emails to deliver malware by embedding malicious scripts or links within the file. These emails often impersonate trusted contacts or organizations to trick users into opening the file and triggering the malware. This can lead to further phishing, device compromise, data theft, or the spread of ransomware.
