@@ -1,0 +1,131 @@
+name: "Recon - Link from Commonly Abused Registrant Country"
+description: "Registrant Country list of ccTLDs for abused allies/non allies of the United States."
+type: "rule"
+severity: "medium"
+source: |
+        type.inbound
+        and any(body.links,
+                network.whois(.href_url.domain).registrant_country_code in~ (
+                  // // US allies ////
+                  "ar", // argentina
+                  "au", // australia
+                  "at", // austria
+                  "be", // belgium
+                  "br", // brazil
+                  "dk", // denmark
+                  "fi", // finland
+                  "de", // germany
+                  "gr", // greece
+                  "il", // israel
+                  "it", // italy
+                  "jp", // japan
+                  "kr", // south korea
+                  "nl", // netherlands
+                  "nz", // new zealand
+                  "no", // norway
+                  "es", // spain
+                  "se", // sweden
+                  "uk", // united kingdom
+                  // // US non allies ////
+                  "af", // afghanistan
+                  "ag", // antigua and barbuda
+                  "ai", // anguilla
+                  "am", // armenia
+                  "az", // azerbaijan
+                  "bj", // benin
+                  "bd", // bangladesh
+                  "bo", // bolivia
+                  "bb", // barbados
+                  "ba", // bosnia and herzegovina
+                  "bi", // burundi
+                  "bf", // burkina faso
+                  "bh", // bahrain
+                  "bw", // botswana
+                  "td", // chad
+                  "cn", // china
+                  "ci", // cote d'ivoire
+                  "cu", // cuba
+                  "dj", // djibouti
+                  "dm", // dominica
+                  "ec", // ecuador
+                  "eg", // egypt
+                  "er", // eritrea
+                  "et", // ethiopia
+                  "fj", // fiji
+                  "fk", // falkland islands (malvinas)
+                  "fo", // faroe islands
+                  "ga", // gabon
+                  "gd", // grenada
+                  "gh", // ghana
+                  "gm", // gambia
+                  "gn", // guinea
+                  "gq", // equatorial guinea
+                  "gt", // guatemala
+                  "gw", // guinea-bissau
+                  "gy", // guyana
+                  "ht", // haiti
+                  "hn", // honduras
+                  "hk", // hong kong
+                  "iq", // iraq
+                  "ir", // iran
+                  "jm", // jamaica
+                  "ke", // kenya
+                  "ki", // kiribati
+                  "kg", // kyrgyzstan
+                  "la", // laos
+                  "lb", // lebanon
+                  "lr", // liberia
+                  "ls", // lesotho
+                  "ly", // libya
+                  "mg", // madagascar
+                  "ml", // mali
+                  "mw", // malawi
+                  "mt", // malta
+                  "ma", // morocco
+                  "mr", // mauritania
+                  "mz", // mozambique
+                  "ni", // nicaragua
+                  "na", // namibia
+                  "ne", // niger
+                  "ng", // nigeria
+                  "kp", // north korea
+                  "om", // oman
+                  "pa", // panama
+                  "pk", // pakistan
+                  "pg", // papua new guinea
+                  "pe", // peru
+                  "qa", // qatar
+                  "re", // reunion
+                  "ru", // russia
+                  "rw", // rwanda
+                  "sa", // saudi arabia
+                  "za", // south africa
+                  "so", // somalia
+                  "sd", // sudan
+                  "sy", // syria
+                  "tw", // taiwan
+                  "tj", // tajikistan
+                  "tz", // tanzania
+                  "tt", // trinidad and tobago
+                  "tn", // tunisia
+                  "tr", // turkey
+                  "ug", // uganda
+                  "ua", // ukraine
+                  "uz", // uzbekistan
+                  "ve", // venezuela
+                  "zm", // zambia
+                  "zw" // zimbabwe
+                )
+        )
+        and (
+          (
+            profile.by_sender_email().prevalence in ("new", "outlier")
+            and not profile.by_sender().solicited
+          )
+          or (
+            profile.by_sender().any_messages_malicious_or_spam
+            and not profile.by_sender().any_false_positives
+          )
+        )
+authors:
+- name: "Michael Robertson"

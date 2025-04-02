@@ -1,0 +1,374 @@
+name: "Recon - Rare File Extension"
+description: "Possible malicious file extensions that are rarely used in email."
+type: "rule"
+severity: "high"
+source: |
+    type.inbound
+    and (
+      any(attachments,
+          .file_extension in~ $file_extensions_common_archives
+          and any(file.explode(.),
+                  .depth > 0
+                  and .file_extension in~ (
+                    "386", // Virtual device driver for DOS
+                    "7z", // 7-Zip compressed archive file
+                    "7zip", // Alternative extension for 7-Zip archive
+                    "a", // Static library for Unix-based systems
+                    "acm", // Audio Compression Manager driver for Windows
+                    "acv", // Photoshop curve settings file
+                    "accdb", // Microsoft Access database file
+                    "accde", // Compiled Access database file
+                    "action", // Automator action file for macOS
+                    "ade", // Compiled Access project file
+                    "adp", // Access Data Project file
+                    "adt", // World of Warcraft map file format
+                    "appxbundle", // Windows application bundle file
+                    "arc", // Archive file format for compressed files
+                    "asf", // Advanced Systems Format multimedia file
+                    "asd", // Autosave file (Microsoft Word)
+                    "aspx", // Active Server Page file for web applications
+                    "avi", // Audio Video Interleave multimedia file
+                    "avb", // Avid Bin file (media editing software)
+                    "ax", // DirectShow filter file for Windows media
+                    "bas", // BASIC source code file
+                    "bin", // Binary file or disk image
+                    "boo", // Booklet or binary archive file
+                    "btm", // Batch file format for 4DOS and 4NT shells
+                    "bz", // Bzip compressed file
+                    "bz2", // Bzip2 compressed file
+                    "bzip2", // Alternative extension for Bzip2 files
+                    "caction", // Custom action script for Automator
+                    "cbt", // Computer-based training file
+                    "cdr", // CorelDRAW vector graphic file
+                    "cer", // Digital certificate file
+                    "cla", // Java class file
+                    "cjs", // CommonJS module file
+                    "cnv", // Data conversion file used by Microsoft Word
+                    "command", // Shell command script for macOS
+                    "cpl", // Windows Control Panel file
+                    "css", // Cascading Style Sheets file
+                    "csc", // Corel script file for automation
+                    "dgz", // Gzip-compressed file with a .tar archive
+                    "dot", // Microsoft Word template file
+                    "dotm", // Word template file with macros enabled
+                    "drv", // Device driver file for Windows
+                    "dtox", // Detox data transformation file
+                    "dvb", // AutoCAD VBA project file
+                    "dylib", // Dynamic library file for macOS
+                    "email", // Plain text email file
+                    "fon", // Font file for Windows
+                    "font", // Font file format
+                    "fxp", // FoxPro compiled program file
+                    "gms", // Gesture and motion file (GameMaker Studio)
+                    "gvb", // Visual Basic Project file
+                    "gz", // Gzip compressed file format
+                    "gzip", // Alternative extension for Gzip files
+                    "hlp", // Help file format
+                    "hta", // HTML Application file (executable)
+                    "ht", // HyperTerminal file for connections
+                    "htlp", // Help file associated with Microsoft Access
+                    "htt", // HTML template file used by Windows Explorer
+                    "imp", // File for various database import functions
+                    "inf", // Setup Information file
+                    "ini", // Configuration file format for application settings
+                    "ipa", // iOS application file
+                    "isp", // IIS Internet Service Provider settings
+                    "its", // Internet Translation System file
+                    "jnlp", // Java Network Launch Protocol file
+                    "job", // Windows Task Scheduler job file
+                    "js", // JavaScript source code file
+                    "jse", // Encoded JavaScript file
+                    "jsx", // JavaScript XML (React) file
+                    "ksh", // KornShell script file
+                    "lqy", // Kyocera phone data file
+                    "mad", // Microsoft Access Data Access Page file
+                    "maf", // Microsoft Access form file
+                    "mag", // Microsoft Access Diagram file
+                    "mam", // Microsoft Access macro file
+                    "mar", // Mozilla archive file format
+                    "mas", // Microsoft Access Stored Procedure
+                    "mat", // MATLAB data file format
+                    "mav", // Microsoft Access View file
+                    "maw", // Microsoft Access Data Access Page file
+                    "ma", // Maya project file format
+                    "mda", // Microsoft Access add-in
+                    "mdb", // Microsoft Access database file
+                    "mde", // Compiled Access database file
+                    "mdt", // Microsoft Access Data Transformation
+                    "mdw", // Microsoft Access Workgroup file
+                    "mdz", // Microsoft Access Wizard file
+                    "mht", // Archived web page in MIME HTML format
+                    "mhtml", // Alternative extension for MIME HTML
+                    "mjs", // ES Module JavaScript file
+                    "mscompress", // Microsoft compressed file format
+                    "msh", // Microsoft Shell script
+                    "msh1", // Microsoft Shell version 1 script
+                    "msh1xml", // XML file for Microsoft Shell version 1
+                    "msh2", // Microsoft Shell version 2 script
+                    "msh2xml", // XML file for Microsoft Shell version 2
+                    "mshxml", // Microsoft Shell script in XML format
+                    "msixbundle", // Windows app bundle file format
+                    "o", // Object file (compiled source code)
+                    "odp", // OpenDocument presentation file
+                    "ods", // OpenDocument spreadsheet file
+                    "odt", // OpenDocument text file
+                    "ogg", // Ogg Vorbis audio file
+                    "onenote", // Microsoft OneNote notebook file
+                    "one", // Microsoft OneNote section file
+                    "onepkg", // Microsoft OneNote package file
+                    "ops", // Microsoft Office profile settings
+                    "package", // Installer or mod file for various apps
+                    "pages", // Apple Pages document
+                    "pbix", // Power BI report file
+                    "pdb", // Program database file for debugging
+                    "php", // Hypertext Preprocessor file for web scripts
+                    "pkg", // Package file for macOS or Solaris
+                    "plugin", // Plugin file for macOS apps
+                    "pps", // PowerPoint Slide Show
+                    "ppsm", // PowerPoint Slide Show with macros
+                    "ppsx", // XML-based PowerPoint Slide Show
+                    "pptm", // PowerPoint presentation with macros
+                    "prf", // Microsoft Outlook profile file
+                    "prg", // Program source file (e.g., FoxPro)
+                    "ps1", // PowerShell script file
+                    "ps1xml", // PowerShell script in XML format
+                    "ps2", // Version 2 PowerShell script
+                    "ps2xml", // Version 2 PowerShell script in XML format
+                    "psc1", // PowerShell console file
+                    "psc2", // PowerShell version 2 console file
+                    "pst", // Outlook personal storage table file
+                    "pub", // Microsoft Publisher document
+                    "py", // Python script file
+                    "rar", // Compressed archive file (RAR format)
+                    "rdp", // Remote Desktop Protocol file
+                    "rpm", // Red Hat Package Manager file
+                    "scpt", // AppleScript script file
+                    "service", // Systemd service unit file for Linux
+                    "sh", // Shell script for Unix-based systems
+                    "shx", // Shape file index for CAD files
+                    "so", // Shared object library for Unix-based systems
+                    "svg", // Scalable Vector Graphics file format for vector images
+                    "tar", // Archive file for multiple files (uncompressed)
+                    "tarz", // Tar archive compressed with Compress
+                    "terminal", // Terminal settings file for macOS
+                    "tgz", // Gzip compressed tar archive
+                    "tool", // Tool file or executable
+                    "ts", // TypeScript source file
+                    "url", // Internet shortcut file
+                    "vhd", // Virtual hard disk file
+                    "vsd", // Visio diagram file
+                    "vsdm", // Visio file with macros enabled
+                    "vsdx", // XML-based Visio diagram file
+                    "vsmacros", // Visual Studio macros file
+                    "vss", // Microsoft Visio stencil file
+                    "vssx", // XML-based Visio stencil
+                    "vst", // Visio template file
+                    "vstm", // Visio template file with macros
+                    "vstx", // XML-based Visio template file
+                    "vsw", // Visio Workspace file
+                    "workflow", // Automator workflow file for macOS
+                    "ws", // Windows Script file
+                    "xhtml", // XML-compliant HTML file
+                    "xla", // Excel add-in file
+                    "xlam", // Excel add-in with macros enabled
+                    "xlsb", // Excel Binary Workbook file
+                    "xlsm", // Excel workbook with macros enabled
+                    "xlt", // Excel template file
+                    "xltm", // Excel template with macros enabled
+                    "xltx", // XML-based Excel template file
+                    "zi", // Renamed Zip file
+                    "zipx" // Extended Zip file format with additional compression
+                  )
+          )
+      )
+      or any(attachments,
+            .file_extension in~ (
+              "386", // Virtual device driver for DOS
+              "7z", // 7-Zip compressed archive file
+              "7zip", // Alternative extension for 7-Zip archive
+              "a", // Static library for Unix-based systems
+              "acm", // Audio Compression Manager driver for Windows
+              "acv", // Photoshop curve settings file
+              "accdb", // Microsoft Access database file
+              "accde", // Compiled Access database file
+              "action", // Automator action file for macOS
+              "ade", // Compiled Access project file
+              "adp", // Access Data Project file
+              "adt", // World of Warcraft map file format
+              "appxbundle", // Windows application bundle file
+              "arc", // Archive file format for compressed files
+              "asf", // Advanced Systems Format multimedia file
+              "asd", // Autosave file (Microsoft Word)
+              "aspx", // Active Server Page file for web applications
+              "avi", // Audio Video Interleave multimedia file
+              "avb", // Avid Bin file (media editing software)
+              "ax", // DirectShow filter file for Windows media
+              "bas", // BASIC source code file
+              "bin", // Binary file or disk image
+              "boo", // Booklet or binary archive file
+              "btm", // Batch file format for 4DOS and 4NT shells
+              "bz", // Bzip compressed file
+              "bz2", // Bzip2 compressed file
+              "bzip2", // Alternative extension for Bzip2 files
+              "caction", // Custom action script for Automator
+              "cbt", // Computer-based training file
+              "cdr", // CorelDRAW vector graphic file
+              "cer", // Digital certificate file
+              "cla", // Java class file
+              "cjs", // CommonJS module file
+              "cnv", // Data conversion file used by Microsoft Word
+              "command", // Shell command script for macOS
+              "cpl", // Windows Control Panel file
+              "css", // Cascading Style Sheets file
+              "csc", // Corel script file for automation
+              "dgz", // Gzip-compressed file with a .tar archive
+              "dot", // Microsoft Word template file
+              "dotm", // Word template file with macros enabled
+              "drv", // Device driver file for Windows
+              "dtox", // Detox data transformation file
+              "dvb", // AutoCAD VBA project file
+              "dylib", // Dynamic library file for macOS
+              "email", // Plain text email file
+              "fon", // Font file for Windows
+              "font", // Font file format
+              "fxp", // FoxPro compiled program file
+              "gms", // Gesture and motion file (GameMaker Studio)
+              "gvb", // Visual Basic Project file
+              "gz", // Gzip compressed file format
+              "gzip", // Alternative extension for Gzip files
+              "hlp", // Help file format
+              "hta", // HTML Application file (executable)
+              "ht", // HyperTerminal file for connections
+              "htlp", // Help file associated with Microsoft Access
+              "htt", // HTML template file used by Windows Explorer
+              "imp", // File for various database import functions
+              "inf", // Setup Information file
+              "ini", // Configuration file format for application settings
+              "ipa", // iOS application file
+              "isp", // IIS Internet Service Provider settings
+              "its", // Internet Translation System file
+              "jnlp", // Java Network Launch Protocol file
+              "job", // Windows Task Scheduler job file
+              "js", // JavaScript source code file
+              "jse", // Encoded JavaScript file
+              "jsx", // JavaScript XML (React) file
+              "ksh", // KornShell script file
+              "lqy", // Kyocera phone data file
+              "mad", // Microsoft Access Data Access Page file
+              "maf", // Microsoft Access form file
+              "mag", // Microsoft Access Diagram file
+              "mam", // Microsoft Access macro file
+              "mar", // Mozilla archive file format
+              "mas", // Microsoft Access Stored Procedure
+              "mat", // MATLAB data file format
+              "mav", // Microsoft Access View file
+              "maw", // Microsoft Access Data Access Page file
+              "ma", // Maya project file format
+              "mda", // Microsoft Access add-in
+              "mdb", // Microsoft Access database file
+              "mde", // Compiled Access database file
+              "mdt", // Microsoft Access Data Transformation
+              "mdw", // Microsoft Access Workgroup file
+              "mdz", // Microsoft Access Wizard file
+              "mht", // Archived web page in MIME HTML format
+              "mhtml", // Alternative extension for MIME HTML
+              "mjs", // ES Module JavaScript file
+              "mscompress", // Microsoft compressed file format
+              "msh", // Microsoft Shell script
+              "msh1", // Microsoft Shell version 1 script
+              "msh1xml", // XML file for Microsoft Shell version 1
+              "msh2", // Microsoft Shell version 2 script
+              "msh2xml", // XML file for Microsoft Shell version 2
+              "mshxml", // Microsoft Shell script in XML format
+              "msixbundle", // Windows app bundle file format
+              "o", // Object file (compiled source code)
+              "odp", // OpenDocument presentation file
+              "ods", // OpenDocument spreadsheet file
+              "odt", // OpenDocument text file
+              "ogg", // Ogg Vorbis audio file
+              "onenote", // Microsoft OneNote notebook file
+              "one", // Microsoft OneNote section file
+              "onepkg", // Microsoft OneNote package file
+              "ops", // Microsoft Office profile settings
+              "package", // Installer or mod file for various apps
+              "pages", // Apple Pages document
+              "pbix", // Power BI report file
+              "pdb", // Program database file for debugging
+              "php", // Hypertext Preprocessor file for web scripts
+              "pkg", // Package file for macOS or Solaris
+              "plugin", // Plugin file for macOS apps
+              "pps", // PowerPoint Slide Show
+              "ppsm", // PowerPoint Slide Show with macros
+              "ppsx", // XML-based PowerPoint Slide Show
+              "pptm", // PowerPoint presentation with macros
+              "prf", // Microsoft Outlook profile file
+              "prg", // Program source file (e.g., FoxPro)
+              "ps1", // PowerShell script file
+              "ps1xml", // PowerShell script in XML format
+              "ps2", // Version 2 PowerShell script
+              "ps2xml", // Version 2 PowerShell script in XML format
+              "psc1", // PowerShell console file
+              "psc2", // PowerShell version 2 console file
+              "pst", // Outlook personal storage table file
+              "pub", // Microsoft Publisher document
+              "py", // Python script file
+              "rar", // Compressed archive file (RAR format)
+              "rdp", // Remote Desktop Protocol file
+              "rpm", // Red Hat Package Manager file
+              "scpt", // AppleScript script file
+              "service", // Systemd service unit file for Linux
+              "sh", // Shell script for Unix-based systems
+              "shx", // Shape file index for CAD files
+              "so", // Shared object library for Unix-based systems
+              "svg", // Scalable Vector Graphics file format for vector images
+              "tar", // Archive file for multiple files (uncompressed)
+              "tarz", // Tar archive compressed with Compress
+              "terminal", // Terminal settings file for macOS
+              "tgz", // Gzip compressed tar archive
+              "tool", // Tool file or executable
+              "ts", // TypeScript source file
+              "url", // Internet shortcut file
+              "vhd", // Virtual hard disk file
+              "vsd", // Visio diagram file
+              "vsdm", // Visio file with macros enabled
+              "vsdx", // XML-based Visio diagram file
+              "vsmacros", // Visual Studio macros file
+              "vss", // Microsoft Visio stencil file
+              "vssx", // XML-based Visio stencil
+              "vst", // Visio template file
+              "vstm", // Visio template file with macros
+              "vstx", // XML-based Visio template file
+              "vsw", // Visio Workspace file
+              "workflow", // Automator workflow file for macOS
+              "ws", // Windows Script file
+              "xhtml", // XML-compliant HTML file
+              "xla", // Excel add-in file
+              "xlam", // Excel add-in with macros enabled
+              "xlsb", // Excel Binary Workbook file
+              "xlsm", // Excel workbook with macros enabled
+              "xlt", // Excel template file
+              "xltm", // Excel template with macros enabled
+              "xltx", // XML-based Excel template file
+              "zi", // Renamed Zip file
+              "zipx" // Extended Zip file format with additional compression
+            )
+      )
+    )
+    and not (
+      any(attachments, strings.icontains(.file_name, "xml.gz"))
+      and (
+        strings.icontains(body.plain.raw, "DMARC Aggregate")
+        or strings.icontains(body.plain.raw, "aggregate DMARC")
+        or strings.icontains(subject.subject, "DMARC Aggregate")
+        or strings.icontains(subject.subject, "aggregate DMARC")
+        or strings.icontains(subject.subject, "report domain")
+      )
+    )
+    // sender profile
+    and (
+      not profile.by_sender().solicited
+      or (profile.by_sender().any_messages_malicious_or_spam)
+    )
+    and not profile.by_sender().any_false_positives
+authors:
+- name: "Michael Robertson"

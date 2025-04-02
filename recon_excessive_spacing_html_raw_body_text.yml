@@ -1,0 +1,40 @@
+name: "Recon - Excessive Spacing in HTML Raw Body Text"
+description: "Email contains a large number of spaces in the message body."
+type: "rule"
+severity: medium
+source: |
+    type.inbound
+    and not headers.auth_summary.dmarc.details.from.domain == "send.eomail6.com"
+    and // Detects 15 or more consecutive <br> tags, which might indicate excessive line breaks in the HTML
+    regex.icontains(body.html.raw, '(<br>(\s+)?){15,}')
+    or // Detects 6 or more consecutive empty paragraph blocks separated by <br>, indicating potentially unnecessary paragraph breaks.
+    regex.icontains(body.html.raw,
+                    '<\/p>\s*<p><br>\s*<\/p>(\s*<p><br>\s*<\/p>){5}'
+    )
+    or // Detects 9 or more consecutive <p>&nbsp;</p> (empty paragraph tags containing non-breaking spaces), indicating excessive use of empty paragraphs.
+    regex.icontains(body.html.raw, '(<p>&nbsp;<\/p>\s*){9}')
+    or // Detects more than 15 instances of the white-space: normal style in the HTML, signaling excessive or repetitive inline CSS rules.
+    regex.icontains(body.html.raw, '(white-space\s*: normal.*?){16,}')
+    // suspicious links
+    and any(body.links,
+            (
+              .href_url.domain.root_domain not in $tranco_1m
+              and .href_url.domain.root_domain not in $umbrella_1m
+              and .href_url.domain.root_domain not in $alexa_1m
+            )
+            or (
+              any(body.links,
+                  .href_url.domain.root_domain in $abuse_ch_urlhaus_domains_trusted_reporters
+              )
+            )
+    )
+    // sender profile
+    and (
+      profile.by_sender().prevalence in ("new", "outlier")
+      or (
+        profile.by_sender().any_messages_malicious_or_spam
+        and not profile.by_sender().any_false_positives
+      )
+    )
+authors:
+- name: "Michael Robertson"

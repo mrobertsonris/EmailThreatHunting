@@ -1,0 +1,39 @@
+name: "Recon - Docusign in Message Screenshot or Current Thread"
+description: "Possible malicious Docusign email."
+type: "rule"
+severity: medium
+source: |
+    type.inbound
+    and (
+      any(file.explode(beta.message_screenshot()),
+          strings.icontains(.scan.ocr.raw, "docusign")
+      )
+      or any(file.explode(beta.message_screenshot()),
+            strings.ilevenshtein(.scan.ocr.raw, "docusign") <= 1
+      )
+      or strings.icontains(body.current_thread.text, 'docusign')
+      or strings.ilevenshtein(body.current_thread.text, 'docusign') <= 1
+    )
+    and (
+      not profile.by_sender().solicited
+      or (
+        profile.by_sender().any_messages_malicious_or_spam
+        and not profile.by_sender().any_false_positives
+      )
+    )
+    and not profile.by_sender().any_false_positives
+    // negate docusign 'via' messages
+    and not (
+      any(headers.hops,
+          any(.fields,
+              .name == "X-Api-Host" and strings.ends_with(.value, "docusign.net")
+          )
+      )
+      and strings.contains(sender.display_name, "via")
+    )
+    // negate docusign originated emails
+    and not any(headers.hops,
+                regex.imatch(.received.server.raw, ".+.docusign.(net|com)")
+    )
+authors:
+- name: "Michael Robertson"

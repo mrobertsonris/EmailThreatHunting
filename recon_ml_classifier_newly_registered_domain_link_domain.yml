@@ -1,0 +1,41 @@
+name: "Recon - ML Classifier and Newly Registered Domain or Link Domain (30 days)"
+description: "Recently registered domains from sender or links in the message body that include ML classifier determinations."
+type: "rule"
+severity: "high"
+source: |
+    type.inbound
+    and (length(body.links) > 0 or length(attachments) > 0)
+    and (
+      any(headers.reply_to, network.whois(.email.domain).days_old <= 30)
+      or any(body.links, network.whois(.href_url.domain).days_old <= 30)
+    )
+    // request is being made
+    and any(ml.nlu_classifier(body.current_thread.text).entities,
+            .name == "request"
+    )
+    // there's financial/urgency OR a tag of medium/high confidence
+    and (
+      any(ml.nlu_classifier(body.current_thread.text).entities,
+          .name in ("financial", "urgency")
+      )
+      or any(ml.nlu_classifier(body.current_thread.text).tags,
+            .name is not null and .confidence in ("medium", "high")
+      )
+    )
+    and (
+      (
+        sender.email.domain.root_domain in $high_trust_sender_root_domains
+        and not headers.auth_summary.dmarc.pass
+      )
+      or sender.email.domain.root_domain not in $high_trust_sender_root_domains
+    )
+    // sender profile
+    and (
+      profile.by_sender().prevalence in ("new", "outlier")
+      or (
+        profile.by_sender().any_messages_malicious_or_spam
+        and not profile.by_sender().any_false_positives
+      )
+    )
+authors:
+- name: "Michael Robertson"

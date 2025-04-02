@@ -1,0 +1,36 @@
+name: "Recon - Payroll Fraud"
+description: "This rule detects messages impersonating employees, from unsolicited senders attempting to reroute payroll or alter payment details."
+type: "rule"
+severity: medium
+source: |
+    type.inbound
+    // ensure the display name contains a space to avoid single named process accounts eg. 'billing, payment'
+    and strings.contains(sender.display_name, " ")
+    and sender.display_name in~ $org_display_names
+    and length(attachments) == 0
+    and length(body.links) < 10
+    and length(body.current_thread.text) < 800
+    and 1 of (
+    regex.icontains(body.current_thread.text,
+                    '(pay\s?(roll|check|date|day)|direct deposit|\bACH\b|\bdd\b|gehalt|salario|salary)'
+    ),
+    regex.icontains(subject.subject,
+                    '(pay\s?(roll|check|date|day)|direct deposit|\bACH\b|\bdd\b|gehalt|salario|salary)'
+    ))
+    // negate highly trusted sender domains unless they fail DMARC authentication
+    and (
+        (
+        (
+            sender.email.domain.root_domain in $high_trust_sender_root_domains
+            or sender.email.domain.root_domain in $org_domains
+        )
+        and (
+            any(distinct(headers.hops, .authentication_results.dmarc is not null),
+                strings.ilike(.authentication_results.dmarc, "*fail")
+            )
+        )
+        )
+        or sender.email.domain.root_domain not in $high_trust_sender_root_domains
+    )
+authors:
+- name: "Michael Robertson"
