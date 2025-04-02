@@ -2,8 +2,6 @@ EmailThreatHunting
 
 # Advanced Email Threat Hunting w/ Detection as Code
 
-![Banner](https://github.com/user-attachments/assets/cf9f3e05-6b39-447c-8739-6d0226fd5e8e)
-
 ---
 
 ## ‼️ Disclaimer
